@@ -82,21 +82,65 @@ html, body {
     transform: rotate(-360deg);
 }
 
-.main-block {
-    position:relative;
-    top: 0%;
-    left:0%;
-    margin:20px;
-    padding:14px;
-    flex-wrap:nowrap;
-    justify-content:center;
-    display:flex;
-}
 
-.main-block img {
+
+.carousel-container {
+    position: relative;
+
     width: 500px;
     height: 500px;
+
 }
+
+.static-image {
+    position:relative;
+    top:0%;
+    left:90%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    margin:20px;
+    padding:14px;
+    flex-wrap: nowrap;
+}
+
+.carousel {
+    position: absolute;
+    top: 30%;
+    left: 90%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-container:hover .static-image {
+    opacity: 0;
+}
+
+.carousel-container:hover .carousel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
 
 .info_block {
     position:relative;
